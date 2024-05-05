@@ -9,16 +9,7 @@ const interface = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-const options = {
-	method: 'GET',
-	hostname: 'yummly2.p.rapidapi.com',
-	port: null,
-	path: '/feeds/auto-complete?q=basil',
-	headers: {
-		'X-RapidAPI-Key': '610d553044msh82a30835640d07dp1f1654jsna0d2d62bfc18',
-		'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
-	}
-};
+
 const publicPath = path.resolve(__dirname, "templates/");
 app.set("views", path.resolve(__dirname, "templates"));
 app.set("view engine", "ejs");
@@ -29,8 +20,8 @@ const Difficulties = {
     Medium: 1,
     Hard: 2
 };
-
-console.log(`Web server is running at http://localhost:${process.argv[2]}`)
+//const host = 443
+//console.log(`Web server is running at http://localhost:${host}`)
 const prompt = "Stop to shutdown the server: ";
 interface.question(prompt, value => {if (value == "stop"){
   process.stdout.write("Shutting down the server\n");
@@ -55,7 +46,7 @@ const client = new MongoClient(uri, {
     }
   });
   
-app.listen(process.argv[2]);
+app.listen(process.env.PORT||3000);
 
 app.get("/", (request, response) => { 
   response.render("index.ejs");
@@ -93,3 +84,9 @@ app.post("/processSearch", async function (request, response) {
 app.get("/tips", (request, response) =>{
   response.render("tips.ejs");
 });
+app.get("/sources", (request, response) =>{
+  response.render("sources.ejs");
+})
+app.get("/aboutus", (request, response)=>{
+  response.render("aboutUs.ejs");
+})
