@@ -89,6 +89,6 @@ app.get("/sources", (request, response) =>{
 })
 app.get("/aboutus", (request, response)=>{
   const obj = {
-    content :"<img src = 'flowers.jpg' alt = 'flowers'></img>"};
+    content :"<img src = 'https://drive.google.com/file/d/1ckBW1ehX0szkuknoEjaKhOntoQHhhxqd/view?usp=sharing' alt = 'flowers'></img>"};
   response.render("aboutUs.ejs",obj);
 })
