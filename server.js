@@ -88,5 +88,7 @@ app.get("/sources", (request, response) =>{
   response.render("sources.ejs");
 })
 app.get("/aboutus", (request, response)=>{
-  response.render("aboutUs.ejs");
+  const obj = {
+    content :"<img src = 'flowers.jpg' alt = 'flowers'></img>"};
+  response.render("aboutUs.ejs",obj);
 })
